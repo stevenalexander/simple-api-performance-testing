@@ -10,6 +10,10 @@ The different test APIs are in source under implementations, performance testing
 
 Each API implementation must return a response to a get request returning the current datetime in the content.
 
+### HTML
+
+Plain html file for base line
+
 ### PHP
 
 A simple PHP API
@@ -46,4 +50,13 @@ A simple PHP API using the [Zend Framework 2](http://framework.zend.com/) and th
     </VirtualHost>
     ```
 
+## Testing
+
+All performance tests are done using apache benchmark, using the scripts under test-scripts. As a base line a plain html file is also included.
+
 ## Results
+
+
+## Links
+* [Howto: Performance Benchmarks a Webserver](http://www.cyberciti.biz/tips/howto-performance-benchmarks-a-web-server.html)
+* [Plot using gnuplot](http://tjholowaychuk.com/post/543349452/apachebench-gnuplot-graphing-benchmarks)
