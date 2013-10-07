@@ -14,8 +14,36 @@ Each API implementation must return a response to a get request returning the cu
 
 A simple PHP API
 
+    Apache vhost example:
+    ```
+    <VirtualHost *:80>
+        DocumentRoot /var/www/src/simple-api-performance-testing/implementations/php
+        SetEnv APPLICATION_ENV "development"
+        <Directory /var/www/src/simple-api-performance-testing/implementations/php>
+            DirectoryIndex index.php
+            AllowOverride All
+            Order allow,deny
+            Allow from all
+        </Directory>
+    </VirtualHost>
+    ```
+
 ### PHP ZF2
 
 A simple PHP API using the [Zend Framework 2](http://framework.zend.com/) and the standard Zend Skeleton application.
+
+    Apache vhost example:
+    ```
+    <VirtualHost *:80>
+        DocumentRoot /var/www/src/simple-api-performance-testing/implementations/php-zf2/public
+        SetEnv APPLICATION_ENV "development"
+        <Directory /var/www/src/simple-api-performance-testing/implementations/php-zf2/public>
+            DirectoryIndex index.php
+            AllowOverride All
+            Order allow,deny
+            Allow from all
+        </Directory>
+    </VirtualHost>
+    ```
 
 ## Results
