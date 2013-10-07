@@ -54,6 +54,11 @@ A simple PHP API using the [Zend Framework 2](http://framework.zend.com/) and th
     php composer.phar install
     ```
 
+### PHP ZF2 Perf
+
+Copy of PHP ZF2 with small changes to enhance performance
+- [Classmap Autoloading](http://samminds.com/2012/11/zf2-performance-quicktipp-2-classmap-autoloading)
+
 ## Testing
 
 All performance tests are done using apache benchmark, using the scripts under test-scripts. As a base line a plain html file is also included.
