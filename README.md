@@ -49,10 +49,38 @@ A simple PHP API using the [Zend Framework 2](http://framework.zend.com/) and th
         </Directory>
     </VirtualHost>
     ```
+    You must install dependencies from composer before testing:
+    ```
+    php composer.phar install
+    ```
 
 ## Testing
 
 All performance tests are done using apache benchmark, using the scripts under test-scripts. As a base line a plain html file is also included.
+
+## EC2 setup
+
+Used the standard Redhat image with the following to configure:
+
+    ```
+    sudo yum install git
+    cd ~
+    git clone https://github.com/stevenalexander/simple-api-performance-testing.git
+    sudo yum install httpd
+    sudo chkconfig --levels 235 httpd on
+    # uncomment NameVirtualHost *:80 and add vhost
+    sudo vi /etc/httpd/conf/httpd.conf
+    sudo service httpd restart
+    sudo yum install php
+    sudo ln -s ~/simple-api-performance-testing/implementations/ /var/www/
+    ```
+
+Instance sizes:
+Instance Type|vCPU|ECU|Memory (GiB)
+m1.small|1|1|1.7
+m1.medium|1|2|3.75
+m1.large|2|4|7.5
+m1.xlarge|4|8|15
 
 ## Results
 
