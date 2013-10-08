@@ -1,44 +1,25 @@
 #!/bin/bash
 
-echo 'HTML'
-sudo cp ~/simple-api-performance-testing/default-html.conf /etc/httpd/conf.d/default.conf
-sudo service httpd restart
-cd ~/simple-api-performance-testing/results/ec2-micro/results-html
-sar -u 1 >> cpu.txt &
-sar -r 1 >> mem.txt &
-~/simple-api-performance-testing/test-scripts/small-ab.sh
-pkill sar
-echo 'Finished HTML waiting'
-sleep 10
+# run e.g.
+# ./run-small.sh default-html.conf ec2-micro html
 
-echo 'php'
-sudo cp ~/simple-api-performance-testing/default-php.conf /etc/httpd/conf.d/default.conf
-sudo service httpd restart
-cd ~/simple-api-performance-testing/ec2-micro/results-php
-sar -u 1 >> cpu.txt &
-sar -r 1 >> mem.txt &
-~/simple-api-performance-testing/test-scripts/small-ab.sh
-pkill sar
-echo 'Finished php waiting'
-sleep 10
+HOME=~/simple-api-performance-testing
+VHOST_CONF=$1
+RESULT_CAT=$2
+RESULT_TYPE=$3
 
-echo 'php-zf2'
-sudo cp ~/simple-api-performance-testing/default-php-zf2.conf /etc/httpd/conf.d/default.conf
-sudo service httpd restart
-cd ~/simple-api-performance-testing/ec2-micro/results-zf2
-sar -u 1 >> cpu.txt &
-sar -r 1 >> mem.txt &
-~/simple-api-performance-testing/test-scripts/small-ab.sh
-pkill sar
-echo 'Finished php-zf2 waiting'
-sleep 10
+mkdir $HOME/results/$RESULT_CAT
+mkdir $HOME/results/$RESULT_CAT/$RESULT_TYPE
 
-echo 'php-zf2-perf'
-sudo cp ~/simple-api-performance-testing/default-php-zf2-perf.conf /etc/httpd/conf.d/default.conf
+echo $RESULT_TYPE
+sudo cp $HOME/$VHOST_CONF /etc/httpd/conf.d/default.conf
 sudo service httpd restart
-cd ~/simple-api-performance-testing/ec2-micro/results-php-zf2-perf
-sar -u 1 >> cpu.txt &
-sar -r 1 >> mem.txt &
-~/simple-api-performance-testing/test-scripts/small-ab.sh
+cd $HOME/results/$RESULT_CAT/$RESULT_TYPE
+sar -u 1 > cpu.txt &
+sar -r 1 > mem.txt &
+echo prep
+ab -n 10 http://localhost/
+echo 1000 requests
+ab -k -n 1000 -g ab-r1000-c1-1.txt http://localhost/ > ab-r1000-c1-1-results.txt
 pkill sar
-echo 'Finished php-zf2-perf waiting'
+echo 'Finished $RESULT_TYPE'
