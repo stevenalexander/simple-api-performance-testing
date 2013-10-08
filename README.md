@@ -18,7 +18,7 @@ Plain html file for base line
 
 A simple PHP API
 
-    Apache vhost example:
+Apache vhost example:
     ```
     <VirtualHost *:80>
         DocumentRoot /var/www/src/simple-api-performance-testing/implementations/php
@@ -36,7 +36,7 @@ A simple PHP API
 
 A simple PHP API using the [Zend Framework 2](http://framework.zend.com/) and the standard Zend Skeleton application.
 
-    Apache vhost example:
+Apache vhost example:
     ```
     <VirtualHost *:80>
         DocumentRoot /var/www/src/simple-api-performance-testing/implementations/php-zf2/public
@@ -49,7 +49,7 @@ A simple PHP API using the [Zend Framework 2](http://framework.zend.com/) and th
         </Directory>
     </VirtualHost>
     ```
-    You must install dependencies from composer before testing:
+You must install dependencies from composer before testing:
     ```
     php composer.phar install
     ```
@@ -58,6 +58,25 @@ A simple PHP API using the [Zend Framework 2](http://framework.zend.com/) and th
 
 Copy of PHP ZF2 with small changes to enhance performance
 - [Classmap Autoloading](http://samminds.com/2012/11/zf2-performance-quicktipp-2-classmap-autoloading)
+
+### Ruby Sinatra
+
+Simple Ruby Sinatra app, running on Unicorn with 8 worker processes. Not using apache, instead run tests directly against Unicorn running on port 8080.
+
+To setup you must first get the gems:
+    ```
+    cd ~/simple-api-performance-testing/implementations/ruby-sinatra
+    bundle
+    ```
+Before running tests startup Unicorn:
+    ```
+    cd ~/simple-api-performance-testing/implementations/ruby-sinatra
+    unicorn -c unicorn.conf &
+    ```
+Kill Unicorn by killing the master pid (in basic_unicorn.pid):
+    ```
+    kill QUIT 1234
+    ```
 
 ## Testing
 
