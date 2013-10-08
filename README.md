@@ -79,9 +79,29 @@ Before running tests startup Unicorn:
 
 Kill Unicorn by killing the master pid (in basic_unicorn.pid):
 
-
     kill QUIT 1234
 
+### Java Dropwizard
+
+Simple Dropwizard app, running on Jetty (included in jar). Not using apache, instead run tests directory against Jetty running on port 8080.
+
+Compiling requires:
+* JDK 1.7
+* Maven
+
+To compile:
+
+    maven package
+
+To run on server:
+
+    java -jar helloworld-0.0.1-SNAPSHOT.jar server &
+
+Kill the app using:
+
+    ps aux | grep java
+    # find pid
+    kill QUIT 1234
 
 ## Testing
 
