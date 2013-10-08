@@ -1,7 +1,7 @@
-require ‘sinatra’
+require 'sinatra’
 set :env, :production
 disable :run
 
-require ‘./app.rb’
+require './app.rb’
 
 run Sinatra::Application
