@@ -19,7 +19,8 @@ Plain html file for base line
 A simple PHP API
 
 Apache vhost example:
-    ```
+
+
     <VirtualHost *:80>
         DocumentRoot /var/www/src/simple-api-performance-testing/implementations/php
         SetEnv APPLICATION_ENV "development"
@@ -30,7 +31,7 @@ Apache vhost example:
             Allow from all
         </Directory>
     </VirtualHost>
-    ```
+
 
 ### PHP ZF2
 
@@ -38,7 +39,8 @@ A simple PHP API using the [Zend Framework 2](http://framework.zend.com/) and th
 - [Classmap Autoloading](http://samminds.com/2012/11/zf2-performance-quicktipp-2-classmap-autoloading).
 
 Apache vhost example:
-    ```
+
+
     <VirtualHost *:80>
         DocumentRoot /var/www/src/simple-api-performance-testing/implementations/php-zf2/public
         SetEnv APPLICATION_ENV "development"
@@ -49,30 +51,37 @@ Apache vhost example:
             Allow from all
         </Directory>
     </VirtualHost>
-    ```
+
+
 You must install dependencies from composer before testing:
-    ```
+
+
     php composer.phar install
-    ```
+
 
 ### Ruby Sinatra
 
 Simple Ruby Sinatra app, running on Unicorn with 8 worker processes. Not using apache, instead run tests directly against Unicorn running on port 8080.
 
 To setup you must first get the gems:
-    ```
+
+
     cd ~/simple-api-performance-testing/implementations/ruby-sinatra
     bundle
-    ```
+
+
 Before running tests startup Unicorn:
-    ```
+
+
     cd ~/simple-api-performance-testing/implementations/ruby-sinatra
     unicorn -c unicorn.conf &
-    ```
+
+
 Kill Unicorn by killing the master pid (in basic_unicorn.pid):
-    ```
+
+
     kill QUIT 1234
-    ```
+
 
 ## Testing
 
@@ -82,7 +91,7 @@ All performance tests are done using apache benchmark, using the scripts under t
 
 Used the standard Redhat image with the following to configure:
 
-    ```
+
     sudo yum install git
     cd ~
     git clone https://github.com/stevenalexander/simple-api-performance-testing.git
@@ -98,14 +107,41 @@ Used the standard Redhat image with the following to configure:
     \curl -L https://get.rvm.io | bash
     rvm requirements
     rvm install 2.0.0
-    ```
 
-Instance sizes:
-Instance Type|vCPU|ECU|Memory (GiB)
-m1.small|1|1|1.7
-m1.medium|1|2|3.75
-m1.large|2|4|7.5
-m1.xlarge|4|8|15
+
+### Instance sizes at time of test
+
+<table>
+    <tr>
+        <th>Instance Type</th>
+        <th>vCPU</th>
+        <th>ECU</th>
+        <th>Memory (GiB)</th>
+    <tr>
+        <td>small</td>
+        <td>1</td>
+        <td>1</td>
+        <td>1.7</td>
+    </tr>
+    <tr>
+        <td>medium</td>
+        <td>1</td>
+        <td>2</td>
+        <td>3.75</td>
+    </tr>
+    <tr>
+        <td>large</td>
+        <td>2</td>
+        <td>4</td>
+        <td>7.5</td>
+    </tr>
+    <tr>
+        <td>xlarge</td>
+        <td>4</td>
+        <td>8</td>
+        <td>15</td>
+    </tr>
+</table>
 
 ## Results
 
