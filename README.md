@@ -78,6 +78,11 @@ Used the standard Redhat image with the following to configure:
     sudo service httpd restart
     sudo yum install php
     sudo ln -s ~/simple-api-performance-testing/implementations/ /var/www/
+    # ruby setup
+    sudo yum remove libyaml.x86_64
+    \curl -L https://get.rvm.io | bash
+    rvm requirements
+    rvm install 2.0.0
     ```
 
 Instance sizes:
