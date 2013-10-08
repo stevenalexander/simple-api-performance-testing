@@ -34,7 +34,8 @@ Apache vhost example:
 
 ### PHP ZF2
 
-A simple PHP API using the [Zend Framework 2](http://framework.zend.com/) and the standard Zend Skeleton application.
+A simple PHP API using the [Zend Framework 2](http://framework.zend.com/) and the standard Zend Skeleton application with small changes to enhance performance
+- [Classmap Autoloading](http://samminds.com/2012/11/zf2-performance-quicktipp-2-classmap-autoloading).
 
 Apache vhost example:
     ```
@@ -53,11 +54,6 @@ You must install dependencies from composer before testing:
     ```
     php composer.phar install
     ```
-
-### PHP ZF2 Perf
-
-Copy of PHP ZF2 with small changes to enhance performance
-- [Classmap Autoloading](http://samminds.com/2012/11/zf2-performance-quicktipp-2-classmap-autoloading)
 
 ### Ruby Sinatra
 
