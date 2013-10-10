@@ -210,13 +210,19 @@ Split out ZF2 from charts as it hides other results
 
 #### Medium
 
+![Alt text](results/ec2-medium-r10000-c10.png)
+
 ![Alt text](results/ec2-medium-r100000-c100.png)
+
+![Alt text](results/ec2-medium-r10000-c10-requests.png)
+
+![Alt text](results/ec2-medium-r10000-c10-php-zf2-requests.png)
 
 ![Alt text](results/ec2-medium-r100000-c100-requests.png)
 
-![Alt text](results/ec2-medium-r100000-c100-php-zf2-requests.png)
-
 #### Large
+
+![Alt text](results/ec2-large-r10000-c10.png)
 
 ![Alt text](results/ec2-large-r100000-c100.png)
 
