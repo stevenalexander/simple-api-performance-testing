@@ -12,11 +12,11 @@ Each API implementation must return a response to a get request returning the cu
 
 ### HTML
 
-Plain html file for base line
+Plain html file for baseline response on the server, not a real API.
 
 ### PHP
 
-A simple PHP API
+A simple PHP script returning a JSON response, not a real or extensible example of an API. Using this as baseline for testing how increasing the number and complexity of PHP scripts affects performance.
 
 Apache vhost example:
 
@@ -37,6 +37,8 @@ Apache vhost example:
 
 A simple PHP API using the [Zend Framework 2](http://framework.zend.com/) and the standard Zend Skeleton application with small changes to enhance performance
 - [Classmap Autoloading](http://samminds.com/2012/11/zf2-performance-quicktipp-2-classmap-autoloading).
+
+This example can be extended to a full API implementation.
 
 Apache vhost example:
 
@@ -63,6 +65,8 @@ You must install dependencies from composer before testing:
 
 Simple Ruby Sinatra app, running on Unicorn with 8 worker processes. Not using apache, instead run tests directly against Unicorn running on port 8080.
 
+This is a very simple implementation which can be extended to a full API, but you would probably want to use a different Ruby framework such as Grape or Rails.
+
 To setup you must first get the gems:
 
 
@@ -84,6 +88,8 @@ Kill Unicorn by killing the master pid (in basic_unicorn.pid):
 ### Java Dropwizard
 
 Simple Dropwizard app, running on Jetty (included in jar). Not using apache, instead run tests directory against Jetty running on port 8080.
+
+This implementation can be extended to a full API and dropwizard is specifically designed to create RESTful APIs handling large volumes of requests.
 
 Compiling requires:
 * JDK 1.7
@@ -240,6 +246,13 @@ Split out ZF2 from charts as it hides other results
 
 ### Conclusions
 
+Going from a single PHP script (not representative of a proper solution) to a full framework library dramatically increases the response times, CPU usage and memory usage. Under load, the request response time also increased more rapidly over time for <a href="#large">PHP ZF2</a> compared to Ruby and Java.
+
+Average CPU usage (large instance) for PHP ZF2 was ~58%, Ruby ~57%, Java ~20%. Average memory usage PHP ZF2 ~24%, Ruby ~14%, Java 14.5%. Going to a large instance helped both PHP ZF2 and Ruby, which shows how CPU dependent the interpreted languages are.
+
+Java Dropwizard showed the best overall performance, with a mean response time of 51ms under heavy load, compared to 151ms for Ruby and 489ms for ZF2.
+
+For all of these implementations you could compensate for poor performance by horizontal scaling, but with Java Dropwizard you would need much less web servers compared to Ruby or ZF2, which would be a large cost saving.
 
 ## Links
 * [Howto: Performance Benchmarks a Webserver](http://www.cyberciti.biz/tips/howto-performance-benchmarks-a-web-server.html)
