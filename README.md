@@ -137,11 +137,6 @@ Used the standard Redhat image with the following to configure:
         <th>vCPU</th>
         <th>ECU</th>
         <th>Memory (GiB)</th>
-    <tr>
-        <td>small</td>
-        <td>1</td>
-        <td>1</td>
-        <td>1.7</td>
     </tr>
     <tr>
         <td>medium</td>
@@ -155,15 +150,89 @@ Used the standard Redhat image with the following to configure:
         <td>4</td>
         <td>7.5</td>
     </tr>
-    <tr>
-        <td>xlarge</td>
-        <td>4</td>
-        <td>8</td>
-        <td>15</td>
-    </tr>
 </table>
 
 ## Results
+
+Split out ZF2 from charts as it hides other results
+
+### Response times via Apache Bench
+
+<table>
+    <tr>
+        <th>Implementation</th>
+        <th colspan=2>10000 requests 10 concurrent (seconds)</th>
+        <th colspan=2>100000 requests 100 concurrent (seconds)</th>
+    </tr>
+    <tr>
+        <th>Implementation</th>
+        <th>Medium</th>
+        <th>Large</th>
+        <th>Medium</th>
+        <th>Large</th>
+    </tr>
+    <tr>
+        <td>html</td>
+        <td>4.659</td>
+        <td>5.56</td>
+        <td>51.114</td>
+        <td>58.634</td>
+    </tr>
+    <tr>
+        <td>php</td>
+        <td>7.279</td>
+        <td>8.233</td>
+        <td>80.293</td>
+        <td>88.331</td>
+    </tr>
+    <tr>
+        <td>php-zf2</td>
+        <td>797.618</td>
+        <td>219.197</td>
+        <td> </td>
+        <td>5093.659</td>
+    </tr>
+    <tr>
+        <td>ruby-sinatra</td>
+        <td>19.508</td>
+        <td>13.462</td>
+        <td>202.547</td>
+        <td>153.448</td>
+    </tr>
+    <tr>
+        <td>java-dropwizard</td>
+        <td>19.686</td>
+        <td>11.516</td>
+        <td>64.759</td>
+        <td>51.117</td>
+    </tr>
+</table>
+
+#### Medium
+
+![Alt text](results/ec2-medium-r100000-c100.png)
+
+![Alt text](results/ec2-medium-r100000-c100-requests.png)
+
+![Alt text](results/ec2-medium-r100000-c100-php-zf2-requests.png)
+
+#### Large
+
+![Alt text](results/ec2-large-r100000-c100.png)
+
+![Alt text](results/ec2-large-r100000-c100-requests.png)
+
+![Alt text](results/ec2-large-r100000-c100-php-zf2-requests.png)
+
+![Alt text](results/ec2-large-r100000-c100-cpu.png)
+
+![Alt text](results/ec2-large-r100000-c100-php-zf2-cpu.png)
+
+![Alt text](results/ec2-large-r100000-c100-mem.png)
+
+![Alt text](results/ec2-large-r100000-c100-php-zf2-mem.png)
+
+### Conclusions
 
 
 ## Links
